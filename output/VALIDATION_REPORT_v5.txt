@@ -1,0 +1,114 @@
+======================================================================
+  CONFIGURATION FIELD CHEMISTRY - VALIDATION REPORT v5
+======================================================================
+  Generated: 2026-02-14 16:39:06
+  Output: cfc_validation_out
+  Bootstrap: 10000 resamples, BCa 95% CIs, seed=42
+
+----------------------------------------------------------------------
+  METHODOLOGY NOTE
+----------------------------------------------------------------------
+  Lambda was fixed a priori at 0.5 from the D0 prediction task
+  (ablation over lam in {0.5, 1.0, 1.5, 2.0}).
+  The hardness validation was performed AFTER freezing lambda.
+  No parameters were tuned to optimize the hardness correlation.
+
+----------------------------------------------------------------------
+  DATA SOURCES (all embedded)
+----------------------------------------------------------------------
+  Elements: 90 | IE: NIST ASD v5.11 | R: Cordero 2008
+  Diatomics: 201 | CRC 104th + Huber & Herzberg 1979
+  EA: 36 elements | Hotop & Lineberger 1985
+
+----------------------------------------------------------------------
+  LAPLACIAN-HARDNESS VALIDATION (lam=0.5)
+----------------------------------------------------------------------
+  N = 35
+  Lap vs eta:
+    Pearson  r  = -0.8301 [-0.9471, -0.6043]  (p=6.98e-10)
+    Spearman rho = -0.6266 [-0.8386, -0.2726]  (p=5.65e-05)
+  Lap vs S:
+    Pearson  r  = +0.7698 [+0.5532, +0.8695]  (p=6.46e-08)
+    Spearman rho = +0.6266 [+0.2726, +0.8386]  (p=5.65e-05)
+
+----------------------------------------------------------------------
+  HEADLINE D0 (gradmag, cardinal, lam=0.5)
+----------------------------------------------------------------------
+  N = 60
+  Geodesic cost:
+    Spearman rho = -0.6326 [-0.8085, -0.3554]  (p=5.87e-08)
+    Pearson  r   = -0.5867 [-0.7893, -0.2329]
+  Baselines:
+    Manhattan  Spearman = -0.6352 [-0.8114, -0.3496]
+    Euclidean  Spearman = -0.5909 [-0.7839, -0.3049]
+
+----------------------------------------------------------------------
+  DISCRETE PHI-COST D0 (phi cost, cardinal, lam=0.5)
+----------------------------------------------------------------------
+  N = 201  [PRIMARY D0 RESULT IN MANUSCRIPT]
+  Geodesic cost:
+    Spearman rho = -0.3247 [-0.4622, -0.1796]  (p=2.57e-06)
+    Pearson  r   = -0.2565 [-0.3939, -0.1010]
+  Baselines:
+    Manhattan  Spearman = -0.2604 [-0.4038, -0.1097]
+    Euclidean  Spearman = -0.2149 [-0.3568, -0.0744]
+
+----------------------------------------------------------------------
+  CONTINUOUS D0 (phi cost, cardinal, lam=0.5)
+----------------------------------------------------------------------
+  N = 201
+  Geodesic cost:
+    Spearman rho = -0.2995 [-0.4397, -0.1520]  (p=1.56e-05)
+    Pearson  r   = -0.2680 [-0.4040, -0.1125]
+  Baselines:
+    Manhattan  Spearman = -0.2604 [-0.4038, -0.1097]
+    Euclidean  Spearman = -0.2149 [-0.3568, -0.0744]
+
+----------------------------------------------------------------------
+  ABLATION (16 configs)
+----------------------------------------------------------------------
+  Best: gradmag, diag=False, lam=0.5 -> rho=-0.6326
+
+  Config                            N      rho      Man      Euc          p
+  --------------------------------------------------------------------
+  gradmag_diag0_lam0.5             60   -0.633   -0.635   -0.591   5.87e-08
+  gradmag_diag0_lam1.0             60   -0.603   -0.635   -0.591   3.46e-07
+  gradmag_diag0_lam1.5             60   -0.560   -0.635   -0.591   3.27e-06
+  gradmag_diag0_lam2.0             60   -0.568   -0.635   -0.591   2.22e-06
+  gradmag_diag1_lam0.5             60   -0.588   -0.635   -0.591   7.98e-07
+  gradmag_diag1_lam1.0             60   -0.567   -0.635   -0.591   2.27e-06
+  gradmag_diag1_lam1.5             60   -0.538   -0.635   -0.591   9.16e-06
+  gradmag_diag1_lam2.0             60   -0.581   -0.635   -0.591   1.15e-06
+  phi_diag0_lam0.5                201   -0.325   -0.260   -0.215   2.57e-06
+  phi_diag0_lam1.0                201   -0.114   -0.260   -0.215   1.07e-01
+  phi_diag0_lam1.5                201   -0.030   -0.260   -0.215   6.72e-01
+  phi_diag0_lam2.0                201   -0.017   -0.260   -0.215   8.07e-01
+  phi_diag1_lam0.5                201   -0.293   -0.260   -0.215   2.48e-05
+  phi_diag1_lam1.0                201   -0.123   -0.260   -0.215   8.11e-02
+  phi_diag1_lam1.5                201   -0.020   -0.260   -0.215   7.79e-01
+  phi_diag1_lam2.0                201   -0.006   -0.260   -0.215   9.36e-01
+  --------------------------------------------------------------------
+
+----------------------------------------------------------------------
+  OUTPUT FILES
+----------------------------------------------------------------------
+  VALIDATION_REPORT_v5.txt
+  ablation_summary.csv
+  continuous_diatomics.csv
+  discrete_phi_diatomics.csv
+  fig1_field_3panel.pdf
+  fig1_field_3panel.png
+  fig2_laplacian_hardness.pdf
+  fig2_laplacian_hardness.png
+  fig3_scatter_headline.pdf
+  fig3_scatter_headline.png
+  fig4_scatter_continuous.pdf
+  fig4_scatter_continuous.png
+  fig5_ablation.pdf
+  fig5_ablation.png
+  headline_diatomics.csv
+  laplacian_hardness_data.csv
+
+======================================================================
+  END OF REPORT
+======================================================================
