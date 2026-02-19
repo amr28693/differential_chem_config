@@ -3,7 +3,7 @@
 cfc_master_validation_v5.py — Configuration Field Chemistry
 =============================================================
 
-FULLY SELF-CONTAINED one-click validation for the J. Math. Chem. paper:
+FULLY SELF-CONTAINED one-click validation for the paper:
 
   "Differential Structure of a Configuration Field on the Periodic Table
    Encodes Chemical Hardness and Predicts Diatomic Bond Energies"
@@ -653,6 +653,7 @@ def main():
 
     print("\n[5/7] Figures...")
     fig_field_3panel(phi,gmag,lap,str(out/"fig1_field_3panel"))
+    fig_scatter(res_phi,ch_phi,r"$\Phi$ cost, cardinal, $\lambda=0.5$",str(out/"fig4_scatter_discrete"))
     fig_scatter(res_h,ch,r"$|\nabla\Phi|$ cost, cardinal, $\lambda=0.5$",str(out/"fig3_scatter_headline"))
 
     # === CONTINUOUS ===
