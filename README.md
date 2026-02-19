@@ -40,6 +40,7 @@ Runtime is roughly 2–5 minutes (dominated by bootstrap resampling).
 | `fig1_field_3panel.pdf/.png` | $\Phi$, $\|\nabla\Phi\|$, and $\nabla^2\Phi$ on the periodic table |
 | `fig2_laplacian_hardness.pdf/.png` | Laplacian vs hardness and softness scatter plots |
 | `fig3_scatter_headline.pdf/.png` | Geodesic cost vs $D_0$ ($N = 60$, gradient-magnitude field) |
+| `fig4_scatter_discrete.pdf/.png` | Geodesic cost vs $D_0$ ($N = 201$, discrete $\Phi$ field) |
 | `fig4_scatter_continuous.pdf/.png` | Geodesic cost vs $D_0$ ($N = 201$, continuous interpolation) |
 | `fig5_ablation.pdf/.png` | 16-configuration ablation heatmap |
 | `ablation_summary.csv` | Ablation results for all 16 configurations |
@@ -79,13 +80,11 @@ All data are embedded in the script. Original sources:
 - SciPy
 - Matplotlib
 
-## License
-
-This code is provided for scientific reproducibility. If you use it in your own work, please cite the manuscript above.
 
 ## Author
 
 Anderson M. Rodriguez · ORCID [0009-0007-5179-9341](https://orcid.org/0009-0007-5179-9341)
+
 
 MIT License
 
