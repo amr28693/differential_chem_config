@@ -2,7 +2,7 @@
 
 **Companion code and data for:**
 
-> A. M. Rodriguez, "Differential Structure of a Configuration Field on the Periodic Table Encodes Chemical Hardness and Predicts Diatomic Bond Energies," submitted to *MATCH Communications in Mathematical and in Computer Chemistry* (2026).
+> A. M. Rodriguez, "Differential Structure of a Configuration Field on the Periodic Table Encodes Chemical Hardness and Predicts Diatomic Bond Energies," submitted to *Discover Chemistry* (2026).
 
 ---
 
