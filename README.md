@@ -1,8 +1,8 @@
-# Differential Structure of a Configuration Field on the Periodic Table
+# Geodesic Costs on a Scalar Field over the Periodic Table Predict Diatomic Bond Dissociation Energies
 
 **Companion code and data for:**
 
-> A. M. Rodriguez, "Differential Structure of a Configuration Field on the Periodic Table Encodes Chemical Hardness and Predicts Diatomic Bond Energies," submitted to *Discover Chemistry* (2026).
+> A. M. Rodriguez, "Geodesic Costs on a Scalar Field over the Periodic Table Predict Diatomic Bond Dissociation Energies," submitted to *Discover Chemistry* (2026).
 
 ---
 
@@ -10,12 +10,12 @@
 
 This repository contains a fully self-contained Python script that reproduces every numerical result, statistical test, and figure reported in the manuscript. All elemental and diatomic data are embedded directly in the script — no external files, APIs, or network access are required.
 
-The core idea: a scalar field $\Phi = \widetilde{IE} + \lambda\,\widetilde{R}$ is constructed on the periodic table lattice from z-scored ionization energies and covalent radii. Applying standard discrete differential operators (gradient, Laplacian) to this field recovers known chemical properties:
+The core idea: a scalar field $\Phi = \widetilde{IE} + \lambda\,\widetilde{R}$ is constructed on the periodic table lattice from z-scored ionization energies and covalent radii. Geodesic costs computed on this field via Dijkstra's algorithm predict experimental diatomic bond dissociation energies, and the field's curvature correlates with chemical hardness:
 
-- **Laplacian ↔ hardness:** $r = -0.830$ (Pearson, $N = 35$, $p < 10^{-9}$)
 - **Geodesic cost ↔ bond dissociation energy:** $\rho = -0.633$ (Spearman, $N = 60$) on the gradient-magnitude field; $\rho = -0.325$ ($N = 201$) on the full diatomic set
+- **Curvature ↔ hardness:** $r = -0.830$ (Pearson, $N = 35$, $p < 10^{-9}$)
 
-All correlations are reported with BCa bootstrap 95% confidence intervals (10,000 resamples).
+All correlations are reported with BCa bootstrap 95% confidence intervals (10,000 resamples). No parameters are fitted to any target property.
 
 ## Quick start
 
@@ -38,7 +38,7 @@ Runtime is roughly 2–5 minutes (dominated by bootstrap resampling).
 |------|-------------|
 | `VALIDATION_REPORT_v5.txt` | Full numerical report with all correlations, CIs, and p-values |
 | `fig1_field_3panel.pdf/.png` | $\Phi$, $\|\nabla\Phi\|$, and $\nabla^2\Phi$ on the periodic table |
-| `fig2_laplacian_hardness.pdf/.png` | Laplacian vs hardness and softness scatter plots |
+| `fig2_laplacian_hardness.pdf/.png` | Curvature vs hardness and softness scatter plots |
 | `fig3_scatter_headline.pdf/.png` | Geodesic cost vs $D_0$ ($N = 60$, gradient-magnitude field) |
 | `fig4_scatter_discrete.pdf/.png` | Geodesic cost vs $D_0$ ($N = 201$, discrete $\Phi$ field) |
 | `fig4_scatter_continuous.pdf/.png` | Geodesic cost vs $D_0$ ($N = 201$, continuous interpolation) |
@@ -47,17 +47,17 @@ Runtime is roughly 2–5 minutes (dominated by bootstrap resampling).
 | `headline_diatomics.csv` | Headline $D_0$ predictions ($N = 60$) |
 | `discrete_phi_diatomics.csv` | Discrete $\Phi$-cost $D_0$ predictions ($N = 201$) |
 | `continuous_diatomics.csv` | Continuous-interpolation $D_0$ predictions ($N = 201$) |
-| `laplacian_hardness_data.csv` | Laplacian–hardness data ($N = 35$) |
+| `laplacian_hardness_data.csv` | Curvature–hardness data ($N = 35$) |
 
 ## Methodology
 
 1. **Field construction.** Ionization energies (NIST ASD v5.11) and covalent radii (Cordero et al. 2008) are z-score normalized and combined as $\Phi = \widetilde{IE} + \lambda\,\widetilde{R}$ with $\lambda = 0.5$ fixed a priori.
 
-2. **Differential operators.** Discrete gradient magnitude $|\nabla\Phi|$ and five-point Laplacian $\nabla^2\Phi$ are computed on the (group, period) lattice.
+2. **Differential operators.** Discrete gradient magnitude $|\nabla\Phi|$ and second difference $\nabla^2\Phi$ along atomic number are computed on the (group, period) lattice.
 
-3. **Hardness validation.** The Laplacian is compared against Pearson–Parr chemical hardness $\eta = (IE - EA)/2$ for 35 elements with known electron affinities.
+3. **Bond-energy prediction.** Dijkstra shortest-path geodesic costs between element pairs are computed on the field and correlated with experimental bond dissociation energies from the CRC Handbook (104th ed.) and Huber & Herzberg (1979).
 
-4. **Bond-energy prediction.** Dijkstra shortest-path geodesic costs between element pairs are computed on the field and correlated with experimental bond dissociation energies from the CRC Handbook (104th ed.) and Huber & Herzberg (1979).
+4. **Hardness validation.** The second difference is compared against Pearson–Parr chemical hardness $\eta = (IE - EA)/2$ for 35 elements with known electron affinities.
 
 5. **Ablation.** A systematic sweep over $\lambda \in \{0.5, 1.0, 1.5, 2.0\}$, cost field $\in \{|\nabla\Phi|, \Phi\}$, and connectivity $\in \{\text{cardinal}, \text{diagonal}\}$ confirms robustness.
 
@@ -80,31 +80,10 @@ All data are embedded in the script. Original sources:
 - SciPy
 - Matplotlib
 
+## License
+
+MIT — see [LICENSE](LICENSE).
 
 ## Author
 
 Anderson M. Rodriguez · ORCID [0009-0007-5179-9341](https://orcid.org/0009-0007-5179-9341)
-
-
-MIT License
-
-Copyright (c) 2026 Anderson M. Rodriguez
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
