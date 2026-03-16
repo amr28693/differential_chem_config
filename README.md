@@ -67,7 +67,7 @@ Runtime is roughly 2–5 minutes (dominated by bootstrap resampling).
 
 All data are embedded in the script. Original sources:
 
-- **Ionization energies:** NIST Atomic Spectra Database, ver. 5.11 (2024)
+- **Ionization energies:** NIST Atomic Spectra Database, ver. 5.11 (2023)
 - **Covalent radii:** Cordero et al., *Dalton Trans.* (2008) 2832–2838
 - **Bond dissociation energies:** CRC Handbook of Chemistry and Physics, 104th ed.; Huber & Herzberg, *Molecular Spectra and Molecular Structure IV* (1979)
 - **Electron affinities:** Hotop & Lineberger, *J. Phys. Chem. Ref. Data* **14** (1985) 731–750
