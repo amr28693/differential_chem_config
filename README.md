@@ -2,7 +2,7 @@
 
 **Companion code and data for:**
 
-> A. M. Rodriguez, "Geodesic Costs on a Scalar Field over the Periodic Table Predict Diatomic Bond Dissociation Energies," submitted to *Discover Chemistry* (2026).
+> A. M. Rodriguez, "Geodesic Costs on a Scalar Field over the Periodic Table Predict Diatomic Bond Dissociation Energies," *Discover Chemistry* (2026).
 
 ---
 
