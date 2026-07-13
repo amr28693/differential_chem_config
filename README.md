@@ -52,6 +52,7 @@ python polarizability_curvature_analysis.py
     ├── polarizability_verification_table.csv # Source-annotated input data (Z = 1–90)
     ├── fig_polarizability_curvature.pdf      # Figure: ∇²Φ vs α and ln(α)
     └── fig_polarizability_curvature.png
+└── sneath_asymmetry_test.py                  # Sneath diagonal asymmetry test (Section 7.4)
 ```
 
 ## What it produces
@@ -82,6 +83,12 @@ python polarizability_curvature_analysis.py
 
 The subfolder also includes `polarizability_verification_table.csv`, which lists all input data ($Z = 1$–90) with per-value source annotations for independent verification.
 
+| File | Description |
+|------|-------------|
+| Terminal output | Block-stratified diagonal asymmetry test ($N = 40$ triplets) with Wilcoxon signed-rank statistics |
+
+Tests whether the configuration field exhibits the directional asymmetry observed by Sneath (Found. Chem. 2, 237, 2000): the (n+1, g+1) neighbor is more similar than the (n+1, g−1) neighbor. The p-block shows the asymmetry at p = 0.003; the d-block reverses.
+
 ## Methodology
 
 1. **Field construction.** Ionization energies (NIST ASD v5.11) and covalent radii (Cordero et al. 2008) are z-score normalized and combined as $\Phi = \widetilde{IE} + \lambda\,\widetilde{R}$ with $\lambda = 0.5$ fixed a priori.
@@ -94,9 +101,11 @@ The subfolder also includes `polarizability_verification_table.csv`, which lists
 
 5. **Polarizability validation.** The second difference is correlated with static dipole polarizabilities (Schwerdtfeger & Nagle 2019/2025) for 85 elements. Unlike hardness, polarizability shares no input variable with the field, providing a stronger test that the curvature encodes genuine chemical information.
 
-6. **Ablation.** A systematic sweep over $\lambda \in \{0.5, 1.0, 1.5, 2.0\}$, cost field $\in \{|\nabla\Phi|, \Phi\}$, and connectivity $\in \{\text{cardinal}, \text{diagonal}\}$ confirms robustness.
+6. **Sneath asymmetry test.** For each element at lattice position (n, g), the absolute field difference |ΔΦ| to the (n+1, g+1) and (n+1, g−1) neighbors is compared. Results are stratified by block (s, d, p) and tested with a one-sided Wilcoxon signed-rank test.
 
-7. **Bootstrap.** All reported correlations include BCa 95% confidence intervals from 10,000 bootstrap resamples.
+7. **Ablation.** A systematic sweep over $\lambda \in \{0.5, 1.0, 1.5, 2.0\}$, cost field $\in \{|\nabla\Phi|, \Phi\}$, and connectivity $\in \{\text{cardinal}, \text{diagonal}\}$ confirms robustness.
+
+8. **Bootstrap.** All reported correlations include BCa 95% confidence intervals from 10,000 bootstrap resamples.
 
 ## Data sources
 
